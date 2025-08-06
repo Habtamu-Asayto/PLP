@@ -1,4 +1,5 @@
 
+'''
 try:
     #File Read & Write Challenge 🖋️: Create a program that reads a file and writes a modified version to a new file.
     #Read the contents of input.txt.
@@ -13,6 +14,7 @@ try:
 except FileNotFoundError:
     print("The file input.txt does not exist.")
 
+'''
 
 
 
@@ -38,3 +40,14 @@ except FileNotFoundError:
     print("The file input.txt does not exist.")
 
 '''
+
+class animal:
+    def __init__(self, tyape, name):
+        self.tyape = tyape
+        self.name = name    
+class dog(animal):
+    pass
+
+d = dog("dog", "Write")
+print(d.tyape)
+print(d.name)
