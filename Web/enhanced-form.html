@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="desc" content="Best meta information" />
+    <title>Assignment for basic front end development</title>
+  </head>
+  <body>
+    <header>
+      <h1>Enhanced Form</h1>
+    </header>
+    <!--List-->
+    <!--Unordered list-->
+    <ul type="square">
+      <li>List 1</li>
+      <li>List 2</li>
+      <li>List 3</li>
+    </ul>
+    <!--Ordered list-->
+    <ol type="1">
+      <li>List 1</li>
+      <li>List 2</li>
+      <li>List 3</li>
+    </ol>
+
+    <!--Table-->
+    <table>
+      <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+        <th>Header 3</th>
+      </tr>
+      <tr>
+        <td>Data 1</td>
+        <td>Data 2</td>
+        <td>Data 3</td>
+      </tr>
+    </table>
+
+    <!--Media-->
+    <!--Audio-->
+    <audio controls>
+      <source src="abc.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <!--Image-->
+    <img src="image.jpg" alt="Sample Image" width="300" height="200" />
+
+    <!--Video-->
+    <video width="320" height="240" controls>
+      <source src="ABC.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <!--A complete HTML5 form including a variety of input fields.-->
+    <form action="#" method="post">
+      <label for="name">Name:</label>
+      <input
+        placeholder="Name"
+        type="text"
+        id="name"
+        name="name"
+        readonly
+        required
+      />
+      <br /><br />
+
+      <label for="email">Email:</label>
+      <input
+        autocomplete="on"
+        placeholder="Email"
+        type="email"
+        id="email"
+        name="email"
+        pattern="[0-9][a-z][A-Z]{5}"
+        required
+      />
+      <br /><br />
+
+      <label for="password">Password:</label>
+      <input
+        placeholder="PWd"
+        type="password"
+        id="password"
+        name="password"
+        pattern="[0-9][a-z][A-Z]{8}"
+        required
+      />
+      <br /><br />
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required /> <br /><br />
+
+      <label for="category">Select your category</label>
+      <select name="category" id="category">
+        <option value="Number 1">Number 1</option>
+        <option value="Number 2">Number 2</option>
+        <option value="Number 3">Number 3</option>
+      </select>
+      <br /><br />
+      <label for="terms">I agree to the terms and conditions</label>
+      <input type="checkbox" id="terms" name="terms" required /><br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+    <footer>
+      <p>
+        © 2024 Web Masters |
+        <a href="https://www.w3.org/WAI/" target="_blank"> Form Footer</a>
+      </p>
+    </footer>
+  </body>
+</html>
