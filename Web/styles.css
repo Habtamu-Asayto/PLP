@@ -5,10 +5,29 @@ nav {
   text-align: center;
 }
 /*Clear implementation of the CSS Box Model*/
-#home{
-    width: 200px;      /* content width */
-    padding: 20px;     /* space inside border */
-    border: 5px solid black;  /* border width */
-    margin: 10px;     
+#home,
+#about,
+#contact {
+  width: 200px; /* content width */
+  padding: 20px; /* space inside border */
+  border: 5px solid black; /* border width */
+  margin: 10px;
 }
 
+/*Clear use of Flexbox and Grid*/
+.ema {
+  width: 96%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr; /* Single column on small screens */
+  }
+}
