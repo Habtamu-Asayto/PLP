@@ -1,3 +1,4 @@
+
 class Book:
     title="Fikir Eske Mekabir"
     price=100
@@ -11,4 +12,4 @@ class Book2(Book):
         print("Author name : ", self.author," WIth price of ", self.price)
 
 b2 = Book2("Haddis Alemayehu")
-print(b2.another())
+print(b2.another()) 
