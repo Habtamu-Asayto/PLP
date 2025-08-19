@@ -31,3 +31,15 @@ nav {
     grid-template-columns: 1fr; /* Single column on small screens */
   }
 }
+
+.container {
+  width: 90%; 
+  padding: 20px;
+  background-color: aquamarine;
+}
+#hideshow{
+  display: block; /* Initially hidden */
+  background-color: lightblue;
+  padding: 10px;
+  margin-top: 10px;
+}
