@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Structured Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #b1d2f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .form-container {
+      background: white;
+      padding: 25px;
+      border-radius: 7px;
+      box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+      width: 400px;
+      height: 80vh;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 21px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 94%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+    input:focus {
+      border-color: #007bff;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+    .password-toggle {
+      position: relative;
+    }
+    .toggle-btn {
+      position: absolute;
+      right: 10px;
+      top: 38px;
+      cursor: pointer;
+      font-size: 0.9em;
+      color: #007bff;
+    }
+    .strength {
+      height: 6px;
+      border-radius: 4px;
+      margin-top: 5px;
+      background: #ddd;
+    }
+    .strength span {
+      display: block;
+      height: 100%;
+      border-radius: 4px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #007bff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Awesome form</h2>
+    <form id="registerForm">
+      <!-- Email -->
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" id="email">
+        <div class="error" id="emailError"></div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group password-toggle">
+        <label>Password</label>
+        <input type="password" id="password">
+        <span class="toggle-btn" id="togglePassword">Show</span>
+        <div class="strength"><span id="strengthBar"></span></div>
+        <div class="error" id="passwordError"></div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" id="confirmPassword">
+        <div class="error" id="confirmError"></div>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("registerForm");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirmPassword");
+
+    const emailError = document.getElementById("emailError");
+    const passwordError = document.getElementById("passwordError");
+    const confirmError = document.getElementById("confirmError");
+
+    const togglePassword = document.getElementById("togglePassword");
+    const strengthBar = document.getElementById("strengthBar");
+
+    // Show/hide password toggle
+    togglePassword.addEventListener("click", () => {
+      const type = password.type === "password" ? "text" : "password";
+      password.type = type;
+      togglePassword.textContent = type === "password" ? "Show" : "Hide";
+    });
+
+    // Password strength checker
+    password.addEventListener("input", () => {
+      const val = password.value;
+      let strength = 0;
+
+      if (val.match(/[a-z]/)) strength++;
+      if (val.match(/[A-Z]/)) strength++;
+      if (val.match(/[0-9]/)) strength++;
+      if (val.match(/[^a-zA-Z0-9]/)) strength++;
+      if (val.length >= 8) strength++;
+
+      const colors = ["red", "orange", "yellow", "lightgreen", "green"];
+      strengthBar.style.width = (strength * 20) + "%";
+      strengthBar.style.background = colors[strength - 1] || "transparent";
+    });
+
+    // Custom validation
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let valid = true;
+
+      // Email validation
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!email.value.match(emailPattern)) {
+        emailError.textContent = "Enter a valid email address.";
+        valid = false;
+      } else {
+        emailError.textContent = "";
+      }
+
+      // Password validation
+      const passVal = password.value;
+      const passPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{8,}$/;
+      if (!passVal.match(passPattern)) {
+        passwordError.textContent = "Password must be 8+ chars, include upper, lower, number & symbol.";
+        valid = false;
+      } else {
+        passwordError.textContent = "";
+      }
+
+      // Confirm password
+      if (password.value !== confirmPassword.value) {
+        confirmError.textContent = "Passwords do not match.";
+        valid = false;
+      } else {
+        confirmError.textContent = "";
+      }
+
+      if (valid) {
+        alert("Registration Successful ✅");
+        form.reset();
+        strengthBar.style.width = "0%";
+      }
+    });
+  </script>
+</body>
+</html>
